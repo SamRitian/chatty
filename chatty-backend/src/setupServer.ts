@@ -65,6 +65,19 @@ export class ChattyServer {
     }
   }
 
+  // websocket vs. http
+  // websocket和http都是建立在tcp之上的
+  // websocket支持双向链接
+  //    前端和服务器建立连接后，服务器也可以向各个不同的前端发单独送信息
+  // http只支持但相连接
+  //    连接后，只能前端发给后端，后端不知道是哪个前端
+  //    发送信息后，前端与后端的链接就中断了
+  // 出现性能差
+  //    http可延展性更高，能支持的并发更高
+  //    websocket运行成本更高
+  // 为什么不都用http?
+  //  http有些场景实现不了：聊天软件
+  //    UserA 给服务器发送信息，服务器再给UserB；必须清楚谁是谁
   private createSocketIO(httpServer: http.Server): void{}
 
   private startHttpServer(httpServer: http.Server): void{
